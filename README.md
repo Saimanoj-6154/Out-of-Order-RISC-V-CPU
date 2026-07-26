@@ -209,4 +209,17 @@ Key structures:
     └── diagrams/
 ```
 ---
-## 
+##  Verification Approach
+
+- **Reference model**: instruction-accurate Python golden model checks
+  architectural register/memory state at commit against RTL.
+- **Scoreboard**: transaction-level compare at ROB retirement.
+- **Functional coverage**: hazard types (RAW/WAW/WAR), RS full/empty,
+  branch mispredict + recovery, exception at various pipeline depths,
+  full/empty ROB, back-to-back dependent issue.
+- **Assertions (SVA)**: structural invariants — ROB never issues out of
+  order at commit, RAT entries never point to a freed physical register,
+  no two RS entries claim the same physical destination simultaneously.
+- **Compliance**: `riscv-arch-test` suite run through the core to check
+  base ISA correctness independent of microarchitecture.
+
