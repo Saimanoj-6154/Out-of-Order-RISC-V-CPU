@@ -81,3 +81,132 @@ Key structures:
 | Reservation Stations | Per-functional-unit operand buffering & wakeup |
 | CDB (Common Data Bus) | Broadcasts results for RS wakeup + ROB writeback |
 | LSQ (Load/Store Queue) | Memory ordering, store-to-load forwarding |
+
+
+## Repo Structure
+
+```
+|
+├── README.md
+├── LICENSE
+├── .gitignore
+├── Makefile
+│
+├── docs/
+│   ├── architecture.md
+│   ├── pipeline.md
+│   ├── branch_prediction.md
+│   ├── memory_subsystem.md
+│   ├── verification_plan.md
+│   ├── performance_results.md
+│   ├── images/
+│   │   ├── cpu_block_diagram.png
+│   │   ├── pipeline.png
+│   │   ├── reorder_buffer.png
+│   │   ├── reservation_station.png
+│   │   └── execution_flow.png
+│   └── references.md
+│
+├── rtl/
+│   ├── core/
+│   │   ├── cpu_top.sv
+│   │   ├── frontend/
+│   │   │   ├── fetch.sv
+│   │   │   ├── branch_predictor.sv
+│   │   │   ├── btb.sv
+│   │   │   ├── bht.sv
+│   │   │   ├── ras.sv
+│   │   │   └── icache_if.sv
+│   │   │
+│   │   ├── decode/
+│   │   │   ├── decoder.sv
+│   │   │   ├── dispatcher.sv
+│   │   │   └── register_rename.sv
+│   │   │
+│   │   ├── rename/
+│   │   │   ├── freelist.sv
+│   │   │   ├── rat.sv
+│   │   │   └── checkpoint.sv
+│   │   │
+│   │   ├── issue/
+│   │   │   ├── reservation_station.sv
+│   │   │   ├── issue_queue.sv
+│   │   │   └── wakeup_select.sv
+│   │   │
+│   │   ├── execute/
+│   │   │   ├── alu.sv
+│   │   │   ├── multiplier.sv
+│   │   │   ├── divider.sv
+│   │   │   ├── branch_unit.sv
+│   │   │   └── csr_unit.sv
+│   │   │
+│   │   ├── memory/
+│   │   │   ├── load_store_queue.sv
+│   │   │   ├── store_buffer.sv
+│   │   │   ├── dcache_if.sv
+│   │   │   └── memory_controller.sv
+│   │   │
+│   │   ├── commit/
+│   │   │   ├── reorder_buffer.sv
+│   │   │   ├── commit_logic.sv
+│   │   │   └── exception_handler.sv
+│   │   │
+│   │   ├── cache/
+│   │   │   ├── icache.sv
+│   │   │   └── dcache.sv
+│   │   │
+│   │   └── common/
+│   │       ├── fifo.sv
+│   │       ├── arbiter.sv
+│   │       ├── priority_encoder.sv
+│   │       └── definitions.svh
+│   │
+│   └── tb/
+│       ├── cpu_tb.sv
+│       ├── memory_model.sv
+│       ├── clock_reset.sv
+│       └── assertions.sv
+│
+├── sim/
+│   ├── run.sh
+│   ├── compile.sh
+│   ├── waveform.do
+│   └── Makefile
+│
+├── test/
+│   ├── isa_tests/
+│   ├── assembly/
+│   ├── random_tests/
+│   ├── benchmark/
+│   └── regression/
+│
+├── scripts/
+│   ├── compile.py
+│   ├── run_tests.py
+│   ├── generate_reports.py
+│   └── lint.sh
+│
+├── synthesis/
+│   ├── yosys/
+│   ├── openlane/
+│   └── reports/
+│
+├── fpga/
+│   ├── nexys_a7/
+│   ├── arty_a7/
+│   └── constraints/
+│
+├── waveforms/
+│
+├── reports/
+│   ├── timing/
+│   ├── area/
+│   ├── power/
+│   └── coverage/
+│
+└── assets/
+    ├── screenshots/
+    └── diagrams/
+```
+---
+## 
