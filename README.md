@@ -69,3 +69,15 @@ This project demonstrates modern superscalar CPU microarchitecture concepts used
                             |
                      Architectural RF
 ```
+---
+
+Key structures:
+
+| Structure | Purpose |
+|---|---|
+| RAT (Register Alias Table) | Maps architectural → physical registers |
+| Free List | Tracks available physical registers |
+| ROB (Reorder Buffer) | Enables in-order commit / precise state |
+| Reservation Stations | Per-functional-unit operand buffering & wakeup |
+| CDB (Common Data Bus) | Broadcasts results for RS wakeup + ROB writeback |
+| LSQ (Load/Store Queue) | Memory ordering, store-to-load forwarding |
