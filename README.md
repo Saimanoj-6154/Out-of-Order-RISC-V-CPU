@@ -3,6 +3,18 @@ An Out-of-Order (OoO) RISC-V processor implemented in SystemVerilog, featuring d
 
 This project demonstrates modern superscalar CPU microarchitecture concepts used in commercial processors while maintaining compatibility with the RISC-V ISA.
 
+## Overview
+
+- **ISA**: RV32IM (integer + multiply/divide), extensible to RV32IMAFD
+- **Pipeline**: 6-stage — Fetch → Decode/Rename → Dispatch → Issue → Execute → Commit
+- **Scheduling**: Reservation stations (Tomasulo algorithm) with dynamic instruction issue
+- **Renaming**: Physical register file with Register Alias Table (RAT), configurable depth
+- **In-order commit**: Reorder Buffer (ROB) for precise exceptions and speculation recovery
+- **Branch prediction**: 2-bit saturating counter (gshare/BHT variant), with misprediction squash
+- **Memory**: Load/Store Queue with store-to-load forwarding, in-order memory disambiguation
+- **Verification**: UVM testbench, functional coverage, SVA assertions, RISC-V compliance suite
+- **Toolflow**: Verilator for fast sim, Yosys/OpenLane for synthesis, GTKWave for waveform debug
+
 ## Features
 
 - RV32I ISA
