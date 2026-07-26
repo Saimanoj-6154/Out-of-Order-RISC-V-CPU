@@ -22,3 +22,38 @@ This project demonstrates modern superscalar CPU microarchitecture concepts used
 - Data Cache
 - FPGA Compatible
 - Open-source ASIC Flow
+
+
+## Microarchitecture
+
+```
+                   +------------------+
+                   | Instruction Cache|
+                   +--------+---------+
+                            |
+                         Fetch Unit
+                            |
+                  Branch Predictor
+                            |
+                          Decode
+                            |
+                    Register Rename
+                            |
+                    Dispatch Logic
+                            |
+              +-------------+-------------+
+              |                           |
+       Reservation Stations        Load Store Queue
+              |                           |
+      Integer Execution Units      Memory Unit
+              |                           |
+              +-------------+-------------+
+                            |
+                     Common Data Bus
+                            |
+                    Reorder Buffer
+                            |
+                        Commit Stage
+                            |
+                     Architectural RF
+```
